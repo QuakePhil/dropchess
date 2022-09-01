@@ -1,4 +1,3 @@
-bootstrap starter
 when a piece is dragged in order to be dropped, highlight the legal squares it can be dropped on
 keep track of history (drops are indicated by a + e.g. +e2, +Qd8, etc)
 2 player version (google existing chessboard.js 2 player example)
