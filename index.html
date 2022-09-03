@@ -4,9 +4,11 @@
     <title>dropchess</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous" />
     <!-- Chessboard.js -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css" integrity="sha512-TU/clvRaSqKB43MX6dvJPEWV8tEGDTbmT4mdxTs6DSYsBY9zKmiw4Qeykp0nS10ndH14HRNG2VWN+IjiMfA17Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- local -->
+    <link rel="stylesheet" href="css/tooltip.css" />
   </head>
   <body>
     <div id="main" class="container">
@@ -33,7 +35,48 @@
           <div id="board" style="width: 400px"></div>
         </div>
         <div class="tab-pane fade" id="pills-rules" role="tabpanel" aria-labelledby="pills-rules-tab">
-          Rules
+          All the
+          <div class="dropchess-tooltip">
+            pieces
+            <span class="dropchess-tooltiptext">
+            except the kings, which start on e1/e8 as usual
+            </span>
+          </div>
+          can be dropped:
+          <ol>
+            <li>
+              <div class="dropchess-tooltip">One at a time
+                <span class="dropchess-tooltiptext">
+                  this counts as a move: you can't move a piece on the board and drop a piece at the same time
+                </span>
+              </div>
+            </li>
+            <li>Can only be dropped on an empty square next to your
+              <div class="dropchess-tooltip">piece(s)
+                <span class="dropchess-tooltiptext">
+                each piece is surrounded by at most 8 empty squares
+                </span>
+              </div>
+            </li>
+            <li>Can't drop more than the
+              <div class="dropchess-tooltip">regular set of pieces
+                <span class="dropchess-tooltiptext">
+                8 pawns, 2 bishops, 2 knights, 2 rooks, and 1 queen
+                </span>
+              </div>
+              <ul>
+                <li>Captured pieces can be re-dropped
+              </ul>
+            </li>
+            <li>
+              Can't drop your opponents
+              <div class="dropchess-tooltip">pieces
+                <span class="dropchess-tooltiptext">
+                you can only drop your own pieces, no matter who captured them
+                </span>
+              </div>
+            </li>
+          </ol>
         </div>
         <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
           About
@@ -41,6 +84,7 @@
       </div>
     </div>
     <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js" integrity="sha512-WfASs5HtTgTL/eZsLaOftSN9wMQl7WZGlU5UiKx/yxTViMfGh9whWRwKAC27qH8VtZJqSMqDdbq2uUb1tY3jvQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
