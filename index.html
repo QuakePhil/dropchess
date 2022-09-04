@@ -92,7 +92,11 @@
         e8: 'bK',
         e1: 'wK'
       }
-      var board = Chessboard('board', position)
+      var config = {
+        position: position,
+        sparePieces: true
+      }
+      var board = Chessboard('board', config)
     </script>
   </body>
 </html>
