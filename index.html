@@ -57,7 +57,7 @@
               </div>
             </li>
             <li>Can't drop more than the
-              <div class="dropchess-tooltip">regular set of pieces
+              <div class="dropchess-tooltip">starting set of pieces
                 <span class="dropchess-tooltiptext">
                 8 pawns, 2 bishops, 2 knights, 2 rooks, and 1 queen
                 </span>
@@ -78,10 +78,10 @@
         </div>
         <div class="tab-pane fade" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
           <ul>
-            <li><a target="_blank" href="https://quakephil.github.io">QuakePhil</a></li>
             <li><a target="_blank" href="https://jquery.com">jQuery</a></li>
             <li><a target="_blank" href="https://getbootstrap.com">bootstrap</a></li>
             <li><a target="_blank" href="https://chessboardjs.com">chessboard.js</a></li>
+            <li><a target="_blank" href="https://quakephil.github.io">QuakePhil</a></li>
           </ul>
         </div>
       </div>
@@ -89,18 +89,19 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js" integrity="sha512-WfASs5HtTgTL/eZsLaOftSN9wMQl7WZGlU5UiKx/yxTViMfGh9whWRwKAC27qH8VtZJqSMqDdbq2uUb1tY3jvQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js" integrity="sha512-xRllwz2gdZciIB+AkEbeq+gVhX8VB8XsfqeFbUh+SzHlN96dEduwtTuVuc2u9EROlmW9+yhRlxjif66ORpsgVA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- TODO: how to make 0.13.4/latest chess.js work?
+    <!-- Uncaught SyntaxError: Unexpected token 'export' (at chess.min.js:1:18039) -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.13.4/chess.min.js" integrity="sha512-5nNBISa4noe7B2/Me0iHkkt7mUvXG9xYoeXuSrr8OmCQIxd5+Qwxhjy4npBLIuxGNQKwew/9fEup/f2SUVkkXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="js/game.js"></script>
+    <script src="js/moves.js"></script>
+    <script src="js/board.js"></script>
     <script>
-      var just_the_kings = {
-        e8: 'bK',
-        e1: 'wK'
-      }
-      var config = {
-        position: just_the_kings,
-        sparePieces: true
-      }
-      var board = Chessboard('board', config)
-      $('#newGame').on('click', function () {
-        board.position(just_the_kings)
+      new_game()
+      new_board()
+      $('#newGame').on('click', function() {
+          new_game()
+          new_board()
       })
     </script>
   </body>
