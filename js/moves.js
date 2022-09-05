@@ -2,6 +2,16 @@
 var lightHighlight = '#a9a9a9'
 var darkHighlight = '#696969'
 
+function drop_move(source, target) {
+    var move = game.move({
+        from: source,
+        to: target,
+        promotion: 'q' // NOTE: always promote to a queen for example simplicity
+    })
+
+    return move
+}
+
 function removeHighlights() {
     $('#board .square-55d63').css('background', '')
 }
@@ -18,6 +28,13 @@ function highlight(square) {
 }
 
 function onDragStart(source, piece) {
+    // highlight drop squares for spare pieces
+    if (source == 'spare') {
+        for (var i = 0; i < drop_squares.length; i++) {
+            highlight(drop_squares[i])
+        }
+    }
+
     // only pick up own pieces
     if ((game.turn() === 'w' && piece.search(/^b/) !== -1) ||
         (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
@@ -29,11 +46,7 @@ function onDrop(source, target) {
     removeHighlights()
 
     // see if the move is legal
-    var move = game.move({
-        from: source,
-        to: target,
-        promotion: 'q' // NOTE: always promote to a queen for example simplicity
-    })
+    var move = drop_move(source, target)
     if (move === null && source == 'spare') {
       return true
     }
@@ -68,11 +81,10 @@ function onMouseoutSquare(square, piece) {
 
 function onSnapEnd(source) {
     if (source == 'spare') {
-      
+
     }
     var fen = game.fen()
     var last_bits_index = fen.indexOf(' ')
     game.load(board.fen() + fen.substring(last_bits_index))
-    console.log(game.fen())
-    console.log(source)
+    calculate_drop_squares()
 }

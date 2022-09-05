@@ -1,3 +1,4 @@
 make a git repo
 bootstrap starter
 chessboard.js
+when a piece is dragged in order to be dropped, highlight the legal squares it can be dropped on
