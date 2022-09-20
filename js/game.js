@@ -27,6 +27,7 @@ function square_of_drop_squares(i, j) {
     drop_square(i+1, j+1)
 }
 
+// TODO: also calculate remaining offboard pieces (if any)
 function calculate_drop_squares() {
     drop_squares = []
     var turn = game.turn()

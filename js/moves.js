@@ -2,6 +2,17 @@
 var lightHighlight = '#a9a9a9'
 var darkHighlight = '#696969'
 
+function increment_fen_plycount(fen) {
+    var parts = fen.split(' ')
+    parts[4] = parseInt(parts[4]) + 1
+    parts[5] = parseInt(parts[5])
+    if (parts[1] == 'b') {
+        parts[5]++
+    }
+    parts[1] = (parts[1] === 'w' ? 'b' : 'w')
+    return parts.join(' ')
+}
+
 function drop_move(source, target) {
     var move = game.move({
         from: source,
@@ -47,12 +58,18 @@ function onDrop(source, target) {
 
     // see if the move is legal
     var move = drop_move(source, target)
-    if (move === null && source == 'spare') {
-      return true
+    if (move === null && source == 'spare' && drop_squares.includes(target)) {
+        // TODO: need to also place (source, target) into next fen
+        next = increment_fen_plycount(game.fen())
+        console.log("after drop", next)
+        board.position(next, false)
+        game.load(next)
+        return 'drop'
     }
 
     // illegal move
     if (move === null) return 'snapback'
+    console.log("after move", game.fen())
 }
 
 function onMouseoverSquare(square, piece) {
