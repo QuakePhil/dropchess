@@ -30,6 +30,9 @@ function onDrop(source, target) {
     // illegal move
     if (move === null) return 'snapback'
     console.log("after move", game.fen())
+
+    // local ai
+    window.setTimeout(makeRandomMove, 250)
 }
 
 function onMouseoverSquare(square, piece) {

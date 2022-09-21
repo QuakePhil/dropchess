@@ -31,6 +31,7 @@
         <div class="tab-pane fade show active" id="pills-play" role="tabpanel" aria-labelledby="pills-play-tab">
           <div id="board" style="width: 400px"></div>
           <button type="button" class="btn btn-secondary" id="newGame">New Game</button>
+          <button type="button" class="btn btn-secondary" id="makeAMove">Make a move</button>
         </div>
         <div class="tab-pane fade" id="pills-rules" role="tabpanel" aria-labelledby="pills-rules-tab">
           All the
@@ -93,6 +94,7 @@
     <!-- TODO: how to make 0.13.4/latest chess.js work?
     <!-- Uncaught SyntaxError: Unexpected token 'export' (at chess.min.js:1:18039) -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.13.4/chess.min.js" integrity="sha512-5nNBISa4noe7B2/Me0iHkkt7mUvXG9xYoeXuSrr8OmCQIxd5+Qwxhjy4npBLIuxGNQKwew/9fEup/f2SUVkkXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="js/game/think.js"></script>
     <script src="js/game.js"></script>
     <script src="js/moves/highlight.js"></script>
     <script src="js/moves/dragndrop.js"></script>
@@ -104,6 +106,9 @@
       $('#newGame').on('click', function() {
           new_game()
           new_board()
+      })
+      $('#makeAMove').on('click', function() {
+          window.setTimeout(makeRandomMove, 250)
       })
     </script>
   </body>
