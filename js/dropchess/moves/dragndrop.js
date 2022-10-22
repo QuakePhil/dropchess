@@ -2,8 +2,9 @@ function getType(piece) {
   return piece[1].toLowerCase()
 }
 
+var droppedPiece
 function onDragStart(source, piece) {
-  console.log("onDragStart", source, piece)
+    // console.log("onDragStart", source, piece)
 
     // only pick up own pieces
     if ((game.turn() === 'w' && piece.search(/^b/) !== -1) ||
@@ -18,6 +19,7 @@ function onDragStart(source, piece) {
 
     // highlight drop squares for spare pieces
     if (source == 'spare') {
+        droppedPiece = piece
         for (var i = 0; i < drop_squares.length; i++) {
             highlight(drop_squares[i])
         }
@@ -25,7 +27,7 @@ function onDragStart(source, piece) {
 }
 
 function onDrop(source, target) {
-  console.log("onDrop", source, target)
+    // console.log("onDrop", source, target)
     removeHighlights()
 
     // see if the move is legal
@@ -33,15 +35,17 @@ function onDrop(source, target) {
     if (move === null && source == 'spare' && drop_squares.includes(target)) {
         // TODO: need to also place (source, target) into next fen
         next = increment_fen_plycount(game.fen())
-        console.log("after drop", next)
+        // console.log("after drop", next)
         board.position(next, false)
         game.load(next)
+        recordMove(getType(droppedPiece).toUpperCase() + "@" + target)
         return 'drop'
     }
 
     // illegal move
     if (move === null) return 'snapback'
-    console.log("after move", game.fen())
+    recordMove(move.san)
+    // console.log("after move", game.fen())
 }
 
 function onMouseoverSquare(square, piece) {
@@ -69,7 +73,7 @@ function onMouseoutSquare(square, piece) {
 }
 
 function onSnapEnd(source) {
-  console.log("onSnapEnd", source)
+    // console.log("onSnapEnd", source)
     var fen = game.fen()
     var last_bits_index = fen.indexOf(' ')
     game.load(board.fen() + fen.substring(last_bits_index))

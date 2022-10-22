@@ -42,7 +42,6 @@ function calculate_remaining_offboard_pieces(turn, game_board) {
       b: 2,
       p: 8
     }
-    console.log("calculate_remaining_offboard_pieces", turn)
     for (var i in game_board) {
         for (var j in game_board[i]) {
             if (game_board[i][j] !== null
@@ -77,6 +76,8 @@ function calculate_drop_squares() {
 }
 
 function new_game() {
+    pgn = []
+    $('#pgn-so-far').text("No moves yet...")
     game.load(just_the_kings)
     calculate_drop_squares()
 }

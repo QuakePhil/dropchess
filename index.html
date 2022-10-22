@@ -17,6 +17,11 @@
           </button>
         </li>
         <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-play-tab" data-bs-toggle="pill" data-bs-target="#pills-pgn" type="button" role="tab" aria-controls="pills-pgn" aria-selected="true">
+          PGN
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
           <button class="nav-link" id="pills-rules-tab" data-bs-toggle="pill" data-bs-target="#pills-rules" type="button" role="tab" aria-controls="pills-rules" aria-selected="false">
           Rules
           </button>
@@ -32,6 +37,11 @@
           <div id="board" style="width: 400px"></div>
           <button type="button" class="btn btn-secondary" id="newGame">New Game</button>
           <button type="button" class="btn btn-secondary" id="makeAMove">Make a move</button>
+        </div>
+        <div class="tab-pane fade" id="pills-pgn" role="tabpanel" aria-labelledby="pills-pgn-tab">
+          <div id="pgn-so-far"></div>
+          <button type="button" class="btn btn-secondary" id="savePGN">Save</button>
+          <button type="button" class="btn btn-secondary" id="loadPGN">Load</button>
         </div>
         <div class="tab-pane fade" id="pills-rules" role="tabpanel" aria-labelledby="pills-rules-tab">
           All the
@@ -96,6 +106,7 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.13.4/chess.min.js" integrity="sha512-5nNBISa4noe7B2/Me0iHkkt7mUvXG9xYoeXuSrr8OmCQIxd5+Qwxhjy4npBLIuxGNQKwew/9fEup/f2SUVkkXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <script src="js/dropchess/think.js"></script>
     <script src="js/dropchess/game.js"></script>
+    <script src="js/dropchess/moves/pgn.js"></script>
     <script src="js/dropchess/moves/highlight.js"></script>
     <script src="js/dropchess/moves/dragndrop.js"></script>
     <script src="js/dropchess/moves.js"></script>
