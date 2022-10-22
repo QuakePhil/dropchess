@@ -8,3 +8,5 @@ position evaluator (for sort)
 save/open history (save into clipboard/prompt)
 reactive chessboard (currently 400px)
 convert blah_blah to blahBlah
+detect game end and display it prominently
+* (maybe change 'make a move' button to 'game over')

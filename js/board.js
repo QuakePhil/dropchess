@@ -1,3 +1,4 @@
+// TODO: hook into an object?
 var game_config = {
     sparePieces: true,
     onDragStart: onDragStart,

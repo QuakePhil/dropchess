@@ -1,16 +1,26 @@
+function getType(piece) {
+  return piece[1].toLowerCase()
+}
+
 function onDragStart(source, piece) {
   console.log("onDragStart", source, piece)
-    // highlight drop squares for spare pieces
-    if (source == 'spare') {
-        for (var i = 0; i < drop_squares.length; i++) {
-            highlight(drop_squares[i])
-        }
-    }
 
     // only pick up own pieces
     if ((game.turn() === 'w' && piece.search(/^b/) !== -1) ||
         (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
         return false
+    }
+
+    // only drop pieces that you have
+    if (source == "spare" && offboard_pieces[getType(piece)] <= 0) {
+        return false
+    }
+
+    // highlight drop squares for spare pieces
+    if (source == 'spare') {
+        for (var i = 0; i < drop_squares.length; i++) {
+            highlight(drop_squares[i])
+        }
     }
 }
 
@@ -64,6 +74,7 @@ function onSnapEnd(source) {
     var last_bits_index = fen.indexOf(' ')
     game.load(board.fen() + fen.substring(last_bits_index))
     calculate_drop_squares()
+    // TODO: extract this somehow...
     // local ai
     window.setTimeout(makeRandomMove, 250)
 }

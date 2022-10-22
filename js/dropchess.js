@@ -1,5 +1,5 @@
 class DropChess {
-  constructor () {
+  constructor() {
     new_game()
     new_board()
   }

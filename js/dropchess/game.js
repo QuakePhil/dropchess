@@ -4,6 +4,7 @@ game.clear() // TODO: rename to chessGame, and newGame to game
 
 // UI helpers
 var drop_squares = []
+var offboard_pieces = {}
 
 // pulled from chess.js internals
 function algebraic(i, j) {
@@ -33,10 +34,32 @@ function square_of_drop_squares(game_board, i, j) {
 }
 
 // TODO: also calculate remaining offboard pieces (if any)
+function calculate_remaining_offboard_pieces(turn, game_board) {
+    var initial = {
+      q: 1,
+      r: 2,
+      n: 2,
+      b: 2,
+      p: 8
+    }
+    console.log("calculate_remaining_offboard_pieces", turn)
+    for (var i in game_board) {
+        for (var j in game_board[i]) {
+            if (game_board[i][j] !== null
+                && game_board[i][j].color == turn
+                && game_board[i][j].type in initial) {
+                  initial[game_board[i][j].type]--
+            }
+        }
+    }
+    offboard_pieces = initial
+}
+
 function calculate_drop_squares() {
     drop_squares = []
     var turn = game.turn()
     var game_board = game.board()
+    calculate_remaining_offboard_pieces(turn, game_board)
     for (var i in game_board) {
         for (var j in game_board[i]) {
             if (game_board[i][j] !== null && game_board[i][j].color == turn) {
