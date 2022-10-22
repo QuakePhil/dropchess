@@ -1,4 +1,5 @@
 function makeRandomMove () {
+  console.log("=== makeRandomMove ===")
     var moves = game.moves()
 
     // game over
@@ -7,4 +8,5 @@ function makeRandomMove () {
     var i = Math.floor(Math.random() * moves.length)
     game.move(moves[i])
     board.position(game.fen())
+    calculate_drop_squares()
 }

@@ -1,4 +1,5 @@
 function onDragStart(source, piece) {
+  console.log("onDragStart", source, piece)
     // highlight drop squares for spare pieces
     if (source == 'spare') {
         for (var i = 0; i < drop_squares.length; i++) {
@@ -14,6 +15,7 @@ function onDragStart(source, piece) {
 }
 
 function onDrop(source, target) {
+  console.log("onDrop", source, target)
     removeHighlights()
 
     // see if the move is legal
@@ -30,9 +32,6 @@ function onDrop(source, target) {
     // illegal move
     if (move === null) return 'snapback'
     console.log("after move", game.fen())
-
-    // local ai
-    window.setTimeout(makeRandomMove, 250)
 }
 
 function onMouseoverSquare(square, piece) {
@@ -60,11 +59,11 @@ function onMouseoutSquare(square, piece) {
 }
 
 function onSnapEnd(source) {
-    if (source == 'spare') {
-
-    }
+  console.log("onSnapEnd", source)
     var fen = game.fen()
     var last_bits_index = fen.indexOf(' ')
     game.load(board.fen() + fen.substring(last_bits_index))
     calculate_drop_squares()
+    // local ai
+    window.setTimeout(makeRandomMove, 250)
 }

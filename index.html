@@ -94,18 +94,17 @@
     <!-- TODO: how to make 0.13.4/latest chess.js work?
     <!-- Uncaught SyntaxError: Unexpected token 'export' (at chess.min.js:1:18039) -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.13.4/chess.min.js" integrity="sha512-5nNBISa4noe7B2/Me0iHkkt7mUvXG9xYoeXuSrr8OmCQIxd5+Qwxhjy4npBLIuxGNQKwew/9fEup/f2SUVkkXg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
-    <script src="js/game/think.js"></script>
-    <script src="js/game.js"></script>
-    <script src="js/moves/highlight.js"></script>
-    <script src="js/moves/dragndrop.js"></script>
-    <script src="js/moves.js"></script>
+    <script src="js/dropchess/think.js"></script>
+    <script src="js/dropchess/game.js"></script>
+    <script src="js/dropchess/moves/highlight.js"></script>
+    <script src="js/dropchess/moves/dragndrop.js"></script>
+    <script src="js/dropchess/moves.js"></script>
     <script src="js/board.js"></script>
+    <script src="js/dropchess.js"></script>
     <script>
-      new_game()
-      new_board()
+      var newGame = new DropChess()
       $('#newGame').on('click', function() {
-          new_game()
-          new_board()
+          var newGame = new DropChess()
       })
       $('#makeAMove').on('click', function() {
           window.setTimeout(makeRandomMove, 250)
