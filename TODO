@@ -1,5 +1,6 @@
 custom sparePieces (or a hasPieces validator for drag start)
 flip board so its always your perspective
+* e.g. when "make a move" is pressed
 "switch sides" button to let AI play (if its your move to play) e.g. https://chessboardjs.com/examples#4002
 keep track of history (drops are indicated by a + e.g. +e2, +Qd8, etc) play, pgn, rules, about
 2 player version (google existing chessboard.js 2 player example)
@@ -10,3 +11,4 @@ reactive chessboard (currently 400px)
 convert blah_blah to blahBlah
 detect game end and display it prominently
 * (maybe change 'make a move' button to 'game over')
+fix san from game.moves() (e.g. Re5# when its not checkmate - drops can block it...)
