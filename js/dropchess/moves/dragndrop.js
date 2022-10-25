@@ -38,6 +38,7 @@ function onDrop(source, target) {
         // console.log("after drop", next)
         board.position(next, false)
         game.load(next)
+        // TODO: add a + if its a drop move giving check
         recordMove(getType(droppedPiece).toUpperCase() + "@" + target)
         return 'drop'
     }
